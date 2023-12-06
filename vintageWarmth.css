@@ -42,41 +42,32 @@ nav {
     background-color: #d46432;
     color: #f5f5f5;
     line-height: 3.5rem;
+    max-width: 1200px;
 }
 
 .navbar-sticky {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Stays above other elements */
+    z-index: 1000;
 }
 
 /* SECTION STYLES */
 section {
     margin: 0 auto;
+    margin-top: 2em;
     /* margin-top: 2.5em; */
-    margin-bottom: 2.5em;  
+    margin-bottom: 2em;  
     max-width: 1250px;
     /* padding: 1em; */
 }
 
-/* TINKER TAPE */
-@keyframes tinkerTape {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+#banner {
+    font-size: 2.5rem;
 }
-  
-.tinker-tape {
-    animation: tinkerTape 1s infinite;
-}
-  
 
+#about h1 {
+    margin-bottom: 1.5rem;
+}
 
 /* Logo Customization */
 .navbar li > h1 {
@@ -136,7 +127,28 @@ a:hover {
 
 p {
     margin-bottom: 1rem;
-    color: #A16B56;
+    color: #E4C7B7;
+}
+
+#popular {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding: 20px; /* Adjust as needed */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.card {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust the width and margin as needed */
+    margin: 10px; /* Adjust as needed */
+    box-sizing: border-box;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
 }
 
 /* Vintage Warmth Cards */

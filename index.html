@@ -11,7 +11,7 @@
 
 <body>
 
-    <section class="navbar-sticky">
+    <section class="navbar-sticky navbar">
         <header>
           <nav>
             <a href="#">Color.com</a>
@@ -25,7 +25,7 @@
     </section>
 
     <section id="banner">
-		<h1>...Color.com is awesome...</h1>
+		<ticker-tape><h1> ...Color.com is awesome... </h1></ticker-tape>
 	</section>
 	  
 
@@ -121,17 +121,52 @@
     </footer>
 
     <script>
-        // JavaScript to move the first character to the end
-		function tinkerTapeEffect() {
-			var bannerText = document.querySelector('#banner h1');
-			var textContent = bannerText.textContent.trim();
-			var firstCharacter = textContent.charAt(0);
-			var newText = textContent.slice(1) + firstCharacter;
-			bannerText.textContent = newText;
+        // TickerTape web component
+		class TickerTape extends HTMLElement {
+			constructor() {
+			super();
+			this.attachShadow({ mode: "open" });
+			const template = document.createElement("template");
+			template.innerHTML = `
+			<div class="ticker-container"></div>
+			`;
+			const shadowRoot = this.shadowRoot;
+			shadowRoot.appendChild(template.content.cloneNode(true));
+
+			this.text = "";
+			this.currentIndex = 0;
+			this.animationSpeed = 200;
+			this.startTicker();
+			}
+
+			set textContent(newText) {
+			this.text = newText;
+			this.currentIndex = 0;
+			this.updateTicker();
+			}
+
+			updateTicker() {
+			const tickerContainer =
+				this.shadowRoot.querySelector(".ticker-container");
+			tickerContainer.textContent =
+				this.text.substring(this.currentIndex) +
+				this.text.substring(0, this.currentIndex);
+			this.currentIndex = (this.currentIndex + 1) % this.text.length;
+			}
+
+			startTicker() {
+			setInterval(() => {
+				this.updateTicker();
+			}, this.animationSpeed);
+			}
 		}
 
-		// Set a timer to call the function every 200 milliseconds (adjust as needed)
-		setInterval(tinkerTapeEffect, 200);
+		customElements.define("ticker-tape", TickerTape);
+
+		const tickerTape = document.querySelector("ticker-tape");
+		tickerTape.textContent = "...Color.com is awesome...";
+
+		
     </script>
 
 </body>
