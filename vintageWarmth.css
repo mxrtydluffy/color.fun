@@ -5,7 +5,6 @@
 
 * {
     padding: 0;
-    margin: 0;
     scroll-behavior: smooth;
     box-sizing: border-box;
 }
@@ -25,8 +24,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
 }
 
+h1 {
+    font-size: 3em;
+}
+
+#banner {
+    display: flex;
+    justify-content: center;
+}
+
 /* Navigation */
-.navbar {
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,6 +43,40 @@ h1, h2, h3, h4, h5, h6 {
     color: #f5f5f5;
     line-height: 3.5rem;
 }
+
+.navbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Stays above other elements */
+}
+
+/* SECTION STYLES */
+section {
+    margin: 0 auto;
+    /* margin-top: 2.5em; */
+    margin-bottom: 2.5em;  
+    max-width: 1250px;
+    /* padding: 1em; */
+}
+
+/* TINKER TAPE */
+@keyframes tinkerTape {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+  
+.tinker-tape {
+    animation: tinkerTape 1s infinite;
+}
+  
+
 
 /* Logo Customization */
 .navbar li > h1 {
