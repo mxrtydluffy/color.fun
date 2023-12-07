@@ -21,7 +21,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
     color: #D1D1A4;
     font-weight: normal;
-    margin-bottom: 0.5rem;
+}
+
+.shopping {
+    color: #314a46;
+}
+
+.shopping-result {
+    color: #ac9c85;
 }
 
 h1 {
@@ -274,6 +281,23 @@ textarea {
     border-radius: 4px;
 }
 
+/* COLOR & CART  */
+/* swatches */
+.swatch {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  #swatches p {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2em;
+  }
+
 /* Checkbox and Switch */
 
 .switch-2 {
@@ -302,6 +326,7 @@ textarea {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    position: relative;
 }
   
 .page-footer .footer-content {

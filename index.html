@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./vintageWarmth.css">
-    <title>Your Colorful Website</title>
+	<link rel="stylesheet" href="">
+    <title>Colorful Website</title>
 </head>
 
 <body>
@@ -59,12 +60,22 @@
         </div>
     </section>
 
-    <section id="swatches" class="swatches">
-        <!-- Color swatches will be dynamically added here -->
+	<!-- Section Color Swatches - This section contains -->
+	<section id="swatches">
+        <header>
+          <h1>Colors</h1>
+          <p>At color.com we offer a range of high quality colors. Choose a color below!</p>
+        </header>
+        <div class="swatches">
+          <!-- div.swatch -->
+        </div>
     </section>
 
     <section id="cart">
-        <h1>Cart</h1>
+		<header>
+			<h1>Cart</h1>
+		</header>
+        
         <ul id="items">
             <!-- Items here -->
         </ul>
@@ -77,7 +88,7 @@
         <h1>Contact</h1>
         <form>
             <label>
-                name
+                Name
                 <input type="text">
             </label>
 
@@ -123,8 +134,11 @@
     <script>
         // TickerTape web component
 		class TickerTape extends HTMLElement {
+			// Called when an instance of the class is created.
 			constructor() {
+			// Calls the constructor of the superclass (HTMLElement in this case).
 			super();
+			// Attaches a shadow DOM to the custom element with an open mode, allowing external access to the shadow DOM.
 			this.attachShadow({ mode: "open" });
 			const template = document.createElement("template");
 			template.innerHTML = `
@@ -133,18 +147,21 @@
 			const shadowRoot = this.shadowRoot;
 			shadowRoot.appendChild(template.content.cloneNode(true));
 
+			// Initialize instance variables
 			this.text = "";
 			this.currentIndex = 0;
 			this.animationSpeed = 200;
 			this.startTicker();
 			}
 
+			// This is a setter for the textContent property. It sets the text property to the provided value, resets the currentIndex to 0, and calls the updateTicker method.
 			set textContent(newText) {
 			this.text = newText;
 			this.currentIndex = 0;
 			this.updateTicker();
 			}
 
+			// Updates the content of the "ticker-container" with the text content, creating a scrolling effect. It shifts the text based on the currentIndex.
 			updateTicker() {
 			const tickerContainer =
 				this.shadowRoot.querySelector(".ticker-container");
@@ -154,6 +171,7 @@
 			this.currentIndex = (this.currentIndex + 1) % this.text.length;
 			}
 
+			// Sets up an interval to call the updateTicker method at regular intervals defined by this.animationSpeed.
 			startTicker() {
 			setInterval(() => {
 				this.updateTicker();
@@ -161,13 +179,15 @@
 			}
 		}
 
+		// Registers the TickerTape class as a custom element with the name "ticker-tape". This allows you to use <ticker-tape> in your HTML.
 		customElements.define("ticker-tape", TickerTape);
-
-		const tickerTape = document.querySelector("ticker-tape");
-		tickerTape.textContent = "...Color.com is awesome...";
-
 		
+		// Retrieves the first <ticker-tape> element in the document.
+		const tickerTape = document.querySelector("ticker-tape");
+		// Sets the text content of the <ticker-tape> element, triggering the set textContent(newText) setter, which starts the ticker animation.
+		tickerTape.textContent = "...Color.com is awesome...";
     </script>
+	<script type="module" src="./index.js"></script>
 
 </body>
 
